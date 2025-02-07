@@ -1,24 +1,27 @@
-require('dotenv').config(); // לטעינת משתנים מקובץ .env
-const express = require('express');
-const axios = require('axios');
+dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 10000;
+const PORT = process.env.PORT || 10000;
 
-app.get('/services', async (req, res) => {
+const RENDER_API_URL = "https://api.render.com/v1/services";
+
+
+app.get("/", async (req, res) => {
   try {
-    const response = await axios.get('https://api.render.com/v1/services', {
+    const response = await axios.get(RENDER_API_URL, {
       headers: {
-        'Authorization': `Bearer ${process.env.RENDER_API_KEY}`
-      }
+        Authorization: `Bearer ${RENDER_API_KEY}`,
+      },
     });
+
     res.json(response.data);
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Error fetching services');
+    console.error("Error fetching data from Render API:", error);
+    res.status(500).json({ error: "Failed to fetch data from Render API" });
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+// הפעלת השרת
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
