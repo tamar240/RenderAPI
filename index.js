@@ -1,4 +1,4 @@
-crequire('dotenv').config(); // לטעינת משתנים מקובץ .env
+require('dotenv').config(); // לטעינת משתנים מקובץ .env
 const express = require('express');
 const axios = require('axios');
 
