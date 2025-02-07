@@ -9,7 +9,7 @@ app.get('/services', async (req, res) => {
   try {
     const response = await axios.get('https://api.render.com/v1/services', {
       headers: {
-        'Authorization': `Bearer ${process.env.RENDER_API_KEY}`
+        'Authorization': `Bearer ${process.env.myRenderAPI}`
       }
     });
     res.json(response.data);
