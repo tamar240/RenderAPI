@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# npm package-lock
+package-lock.json
+
+# Yarn lock
+yarn.lock
+
+# dotenv files
+.env
